@@ -5,6 +5,8 @@ import type { NodePath } from '@babel/core'
 
 import { generateExtractableModule } from './module-generator'
 import { executeModule } from './module-executor'
+import { generateClassName } from './classname-generator'
+import { compileCss, wrapToSelector } from './css-compiler'
 
 interface State {
   imports: string[]
@@ -49,6 +51,18 @@ export default declare((api, opts) => {
     try {
       // @ts-expect-error
       const extractable = executeModule(code, state.file.opts.filename, mapper)
+
+      for (let i = 0; i < extractable.length; i++) {
+        const className = generateClassName(state.nodes[i], state)
+        const css = compileCss(wrapToSelector(className, extractable[i].css))
+
+        state.nodes[i].replaceWith(
+          t.objectExpression([
+            t.objectProperty(t.identifier('css'), t.stringLiteral(css)),
+            t.objectProperty(t.identifier('className'), t.stringLiteral(className)),
+          ]),
+        )
+      }
     } catch (error) {
       console.log(error)
     }
