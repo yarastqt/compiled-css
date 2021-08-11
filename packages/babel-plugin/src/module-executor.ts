@@ -2,6 +2,7 @@ import { VirtualModule } from './virtual-module'
 
 interface CssChunk {
   css: string
+  className: string
 }
 
 interface Exports {

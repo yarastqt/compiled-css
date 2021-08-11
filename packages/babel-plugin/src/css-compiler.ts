@@ -10,7 +10,3 @@ export function compileCss(source: string) {
 
   return css
 }
-
-export function wrapToSelector(selector: string, source: string) {
-  return `.${selector}{${source}}`
-}

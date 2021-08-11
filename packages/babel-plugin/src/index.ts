@@ -6,7 +6,7 @@ import type { NodePath } from '@babel/core'
 import { generateExtractableModule } from './module-generator'
 import { executeModule } from './module-executor'
 import { generateClassName } from './classname-generator'
-import { compileCss, wrapToSelector } from './css-compiler'
+import { compileCss } from './css-compiler'
 
 interface State {
   imports: string[]
@@ -39,6 +39,11 @@ export default declare((api, opts) => {
 
   function collectExtractable(path: NodePath<TaggedTemplateExpression>, state: State) {
     if (t.isIdentifier(path.node.tag) && state.imports.includes(path.node.tag.name)) {
+      const className = generateClassName(path, state)
+      // TODO: Refactor this code with better solution.
+      // Push className to first chunk, because it's easy way to extract it for runtime.
+      path.node.quasi.quasis[0].value.raw = `{{${className}}}${path.node.quasi.quasis[0].value.raw}`
+
       state.nodes.push(path)
       // @ts-expect-error (TODO: Fix this case)
       state.extractable.push(path.parentPath.node.id.name)
@@ -53,8 +58,8 @@ export default declare((api, opts) => {
       const extractable = executeModule(code, state.file.opts.filename, mapper)
 
       for (let i = 0; i < extractable.length; i++) {
-        const className = generateClassName(state.nodes[i], state)
-        const css = compileCss(wrapToSelector(className, extractable[i].css))
+        const css = compileCss(extractable[i].css)
+        const { className } = extractable[i]
 
         state.nodes[i].replaceWith(
           t.objectExpression([
