@@ -1,6 +1,6 @@
 export type Kind = 'css' | 'keyframes'
 
-export interface CssChunk {
+export interface StylesChunk {
   css: string
   className: string
   /**
@@ -18,5 +18,5 @@ export interface CssChunk {
 }
 
 export type Styles = TemplateStringsArray
-export type Interpolation = CssChunk | string | number
+export type Interpolation = StylesChunk | string | number
 export type Interpolations = Interpolation[]

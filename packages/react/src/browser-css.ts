@@ -1,10 +1,10 @@
-import type { Styles, Interpolations, CssChunk } from './types'
+import type { Styles, Interpolations, StylesChunk } from './types'
 
-export function css(styles: Styles, ...interpolations: Interpolations): CssChunk {
+export function css(styles: Styles, ...interpolations: Interpolations): StylesChunk {
   throw new NotImplemented()
 }
 
-export function keyframes(styles: Styles, ...interpolations: Interpolations): CssChunk {
+export function keyframes(styles: Styles, ...interpolations: Interpolations): StylesChunk {
   throw new NotImplemented()
 }
 

@@ -1,15 +1,15 @@
-import type { Kind, CssChunk, Styles, Interpolation, Interpolations } from './types'
+import type { Kind, StylesChunk, Styles, Interpolation, Interpolations } from './types'
 
-export function css(styles: Styles, ...interpolations: Interpolations): CssChunk {
+export function css(styles: Styles, ...interpolations: Interpolations): StylesChunk {
   return compile('css')(styles, ...interpolations)
 }
 
-export function keyframes(styles: Styles, ...interpolations: Interpolations): CssChunk {
+export function keyframes(styles: Styles, ...interpolations: Interpolations): StylesChunk {
   return compile('keyframes')(styles, ...interpolations)
 }
 
 function compile(kind: Kind) {
-  return (styles: Styles, ...interpolations: Interpolations): CssChunk => {
+  return (styles: Styles, ...interpolations: Interpolations): StylesChunk => {
     const classNameRe = /{{(.+)}}/
     const executed = styles[0].match(classNameRe)
 
@@ -59,6 +59,6 @@ function createContainer(kind: Kind, className: string, body: string) {
   throw new Error(`Unexpected kind ${kind}.`)
 }
 
-function isCssChunk(value: Interpolation): value is CssChunk {
+function isCssChunk(value: Interpolation): value is StylesChunk {
   return typeof value === 'object' && value.kind !== undefined
 }
