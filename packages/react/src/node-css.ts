@@ -23,22 +23,27 @@ function compile(kind: Kind) {
 
     for (let i = 0; i < interpolations.length; i++) {
       const interpolation = interpolations[i]
+      const chunk = styles[i + 1]
 
       if (isCssChunk(interpolation)) {
         if (interpolation.kind === 'keyframes') {
-          body.push(interpolation.className + styles[i + 1])
+          body.push(interpolation.className + chunk)
           extra.push(interpolation.toString())
         }
+        if (interpolation.kind === 'css') {
+          body.push(interpolation.body + chunk)
+        }
       } else {
-        body.push(interpolation + styles[i + 1])
+        body.push(interpolation + chunk)
       }
     }
 
     body.push(...extra)
 
-    const css = createContainer(kind, className, body.join(''))
+    const source = body.join('')
+    const css = createContainer(kind, className, source)
 
-    return { kind, className, css, toString: () => css }
+    return { kind, className, css, body: source, toString: () => css }
   }
 }
 

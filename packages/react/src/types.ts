@@ -6,6 +6,10 @@ export interface CssChunk {
   /**
    * @internal
    */
+  body: string
+  /**
+   * @internal
+   */
   kind: Kind
   /**
    * @internal
