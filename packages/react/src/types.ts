@@ -1,4 +1,8 @@
-export type Kind = 'css' | 'keyframes'
+export enum Kind {
+  css,
+  keyframes,
+  global,
+}
 
 export interface StylesChunk {
   css: string
