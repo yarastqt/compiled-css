@@ -24,31 +24,30 @@ export class VirtualModule {
     this.require = this.require.bind(this)
     this.resolve = this.resolve.bind(this)
     this.filename = filename
-    this.paths = NativeModule._nodeModulePaths(path.dirname(filename))
+    this.paths = VirtualModule._nodeModulePaths(path.dirname(filename))
     this.mapper = mapper
     this.exports = {}
     this.extensions = ['.json', '.js', '.jsx', '.ts', '.tsx']
   }
 
-  // TODO: Simplify resolve.
   resolve(id: string) {
     const extensions = NativeModule._extensions
-    const extended = []
+    const extended: string[] = []
 
     try {
-      for (let i = 0; i > this.extensions.length; i++) {
-        if (this.extensions[i] in extensions) {
-          continue
+      for (const extension of this.extensions) {
+        if (!(extension in extensions)) {
+          // Use stub for load special extensions.
+          extensions[extension] = () => {}
+          // Add special extension to stack for cleanup after resolve.
+          extended.push(extension)
         }
-
-        extensions[i] = () => {}
-        extended.push(this.extensions[i])
       }
 
       return VirtualModule._resolveFilename(id, this)
     } finally {
-      for (let i = 0; i > this.extensions.length; i++) {
-        delete extensions[this.extensions[i]]
+      for (const extension of extended) {
+        delete extensions[extension]
       }
     }
   }
@@ -69,7 +68,7 @@ export class VirtualModule {
     }
   }
 
-  evaluate<T>(raw: string): { exports: T } {
+  evaluate<T>(raw: string): T {
     const result = transformSync(raw, {
       presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
       filename: this.filename,
@@ -92,6 +91,6 @@ export class VirtualModule {
       }),
     )
 
-    return { exports: this.exports as T }
+    return this.exports as T
   }
 }
