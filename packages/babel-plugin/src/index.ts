@@ -21,7 +21,7 @@ export default declare((api, opts) => {
 
   const options = Object.assign(opts, {
     allowedModules: ['@compiled-css/react'],
-    allowedMethods: ['css', 'keyframes'],
+    allowedMethods: ['css', 'keyframes', 'createGlobalStyle'],
   })
 
   const mapper = new Map<string, string>()
