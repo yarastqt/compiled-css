@@ -1,12 +1,12 @@
 import { VirtualModule } from './virtual-module'
 
-interface CssChunk {
+interface StylesChunk {
   css: string
   className: string
 }
 
 interface Exports {
-  __extractable: CssChunk[]
+  __extractable: StylesChunk[]
 }
 
 export function executeModule(code: string, fileName: string, mapper: Map<string, string>) {
