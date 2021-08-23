@@ -72,7 +72,9 @@ export class VirtualModule {
     const result = transformSync(raw, {
       presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
       filename: this.filename,
-      babelrc: false,
+      caller: {
+        name: 'virtual-module-evaluator',
+      },
     })
 
     if (!result) {

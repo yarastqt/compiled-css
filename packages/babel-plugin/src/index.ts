@@ -14,6 +14,8 @@ interface State {
   extractable: string[]
 }
 
+const processed = new Set<string>()
+
 export default declare((api, opts) => {
   api.assertVersion(7)
 
@@ -78,6 +80,12 @@ export default declare((api, opts) => {
     visitor: {
       Program: {
         enter: (path, state) => {
+          if (processed.has(state.filename)) {
+            return
+          }
+
+          processed.add(state.filename)
+
           state.imports = []
           state.nodes = []
           state.extractable = []
@@ -99,6 +107,9 @@ export default declare((api, opts) => {
             // @ts-expect-error (TODO: Fix ts issue)
             extractStyles(path, state)
           }
+        },
+        exit: () => {
+          processed.clear()
         },
       },
     },
