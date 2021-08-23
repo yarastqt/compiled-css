@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 
-export function useStyles(...styles: any[]) {
+import { inject } from './stylesheet'
+import type { StylesChunk } from './types'
+
+export function useStyles(...styles: StylesChunk[]): string {
   const classNames = styles.map((style) => style.className)
 
   useEffect(() => {
@@ -8,13 +11,4 @@ export function useStyles(...styles: any[]) {
   }, [])
 
   return classNames.join(' ')
-}
-
-function inject(chunk: any) {
-  if (!document.querySelector(`[data-compiled="${chunk.className}"]`)) {
-    const style = document.createElement('style')
-    style.dataset.compiled = chunk.className
-    style.textContent = chunk.css
-    document.head.append(style)
-  }
 }
