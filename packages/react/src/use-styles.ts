@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
+import type { StylesChunk } from '@compiled-css/core'
 
 import { inject } from './stylesheet'
-import type { StylesChunk } from './types'
 import { useStyleSheetManager } from './stylesheet-manager'
 
 export function useStyles(...styles: StylesChunk[]): string {

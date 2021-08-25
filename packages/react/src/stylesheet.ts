@@ -1,4 +1,4 @@
-import type { StylesChunk } from './types'
+import type { StylesChunk } from '@compiled-css/core'
 
 export function inject(chunk: StylesChunk): void {
   if (!document.querySelector(`[data-compiled="${chunk.className}"]`)) {

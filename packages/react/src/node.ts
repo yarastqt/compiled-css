@@ -1,4 +1,4 @@
-export * from '@compiled-css/core'
+export * from '@compiled-css/core/lib/node'
 export * from './use-styles'
 export * from './component'
 export * from './global-styles'

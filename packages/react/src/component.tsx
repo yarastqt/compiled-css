@@ -1,7 +1,8 @@
-import React, { FC, AllHTMLAttributes, ComponentType } from 'react'
+import React from 'react'
+import type { FC, AllHTMLAttributes, ComponentType } from 'react'
+import type { StylesChunk } from '@compiled-css/core'
 
 import { useStyles } from './use-styles'
-import type { StylesChunk } from './types'
 
 export type ComponentProps = AllHTMLAttributes<HTMLElement>
 

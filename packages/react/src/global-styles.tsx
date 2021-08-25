@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import type { FC } from 'react'
+import type { StylesChunk } from '@compiled-css/core'
 
 import { useStyles } from './use-styles'
-import type { StylesChunk } from './types'
 
 interface GlobalStylesProps {
   styles: StylesChunk | StylesChunk[]

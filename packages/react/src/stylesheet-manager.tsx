@@ -1,4 +1,5 @@
-import React, { FC, createContext, useContext } from 'react'
+import React, { createContext, useContext } from 'react'
+import type { FC } from 'react'
 
 export type StyleSheetManager = Map<string, string>
 
