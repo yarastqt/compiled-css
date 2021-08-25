@@ -69,7 +69,7 @@ export class VirtualModule {
   }
 
   evaluate<T>(raw: string): T {
-    const result = transformSync(raw, {
+    const transformed = transformSync(raw, {
       presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
       filename: this.filename,
       caller: {
@@ -77,11 +77,17 @@ export class VirtualModule {
       },
     })
 
-    if (!result) {
+    if (!transformed) {
       throw new Error(`Cannot evaluate module: ${this.filename}.`)
     }
 
-    const script = new vm.Script(`(function () { ${result.code}\n})();`, {
+    // FIXME: Find better solution for nextjs usage.
+    transformed.code = transformed.code?.replace(
+      /import React from "react";/g,
+      'const React = require("react");',
+    )
+
+    const script = new vm.Script(`(function () { ${transformed.code}\n})();`, {
       filename: this.filename,
     })
 
