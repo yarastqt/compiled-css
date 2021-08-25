@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "tsc -w"
   },
   "devDependencies": {
     "@types/babel-types": "7.0.10",
