@@ -1,0 +1,16 @@
+{
+  "name": "@compiled-css/core",
+  "version": "0.0.1",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "4.3.5"
+  },
+  "dependencies": {
+    "tslib": "2.3.0"
+  }
+}
