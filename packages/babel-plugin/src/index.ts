@@ -20,12 +20,14 @@ export default declare((api, opts) => {
   api.assertVersion(7)
 
   const options = Object.assign(opts, {
-    allowedModules: ['@compiled-css/react'],
+    allowedModules: ['@compiled-css/core', '@compiled-css/react'],
     allowedMethods: ['css', 'keyframes', 'createGlobalStyle'],
   })
 
-  const mapper = new Map<string, string>()
-  mapper.set('@compiled-css/react', '@compiled-css/react/lib/node-css')
+  const mapper = new Map<string, string>([
+    ['@compiled-css/core', '@compiled-css/core/lib/node'],
+    ['@compiled-css/react', '@compiled-css/react/lib/node'],
+  ])
 
   function collectImports(path: NodePath<ImportDeclaration>, state: State) {
     if (!options.allowedModules.includes(path.node.source.value)) {
@@ -60,8 +62,8 @@ export default declare((api, opts) => {
       const extractable = executeModule(code, state.file.opts.filename, mapper)
 
       for (let i = 0; i < extractable.length; i++) {
-        const css = compileCss(extractable[i].css)
-        const { className } = extractable[i]
+        const { className, css: rawCss } = extractable[i]
+        const css = compileCss(rawCss)
 
         state.nodes[i].replaceWith(
           t.objectExpression([
