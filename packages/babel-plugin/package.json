@@ -1,6 +1,6 @@
 {
   "name": "@steely/babel-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publishConfig": {
     "access": "public"
   },
@@ -30,5 +30,7 @@
     "postcss": "8.3.6",
     "postcss-nested": "5.0.6"
   },
-  "files": ["lib"]
+  "files": [
+    "lib"
+  ]
 }

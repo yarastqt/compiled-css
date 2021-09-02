@@ -1,6 +1,6 @@
 {
   "name": "@steely/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publishConfig": {
     "access": "public"
   },
@@ -17,5 +17,7 @@
   "dependencies": {
     "tslib": "2.3.0"
   },
-  "files": ["lib"]
+  "files": [
+    "lib"
+  ]
 }
