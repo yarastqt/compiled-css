@@ -20,13 +20,13 @@ export default declare((api, opts) => {
   api.assertVersion(7)
 
   const options = Object.assign(opts, {
-    allowedModules: ['@compiled-css/core', '@compiled-css/react'],
+    allowedModules: ['@steely/core', '@steely/react'],
     allowedMethods: ['css', 'keyframes', 'createGlobalStyle'],
   })
 
   const mapper = new Map<string, string>([
-    ['@compiled-css/core', '@compiled-css/core/lib/node'],
-    ['@compiled-css/react', '@compiled-css/react/lib/node'],
+    ['@steely/core', '@steely/core/lib/node'],
+    ['@steely/react', '@steely/react/lib/node'],
   ])
 
   function collectImports(path: NodePath<ImportDeclaration>, state: State) {
@@ -78,7 +78,7 @@ export default declare((api, opts) => {
   }
 
   return {
-    name: '@compiled-css/babel-plugin',
+    name: '@steely/babel-plugin',
     visitor: {
       Program: {
         enter: (path, state) => {

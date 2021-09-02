@@ -1,4 +1,4 @@
-export * from '@compiled-css/core'
+export * from '@steely/core'
 export * from './use-styles'
 export * from './component'
 export * from './global-styles'

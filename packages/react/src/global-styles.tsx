@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { StylesChunk } from '@compiled-css/core'
+import type { StylesChunk } from '@steely/core'
 
 import { useStyles } from './use-styles'
 

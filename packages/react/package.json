@@ -1,5 +1,5 @@
 {
-  "name": "@compiled-css/react",
+  "name": "@steely/react",
   "version": "0.0.1",
   "publishConfig": {
     "access": "public"
@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "tslib": "2.3.0",
-    "@compiled-css/core": "0.0.1"
+    "@steely/core": "0.0.1"
   }
 }

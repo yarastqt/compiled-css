@@ -1,1 +1,1 @@
-# @compiled-css/core
+# @steely/core

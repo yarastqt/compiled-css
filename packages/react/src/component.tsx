@@ -1,6 +1,6 @@
 import React from 'react'
 import type { FC, AllHTMLAttributes, ComponentType } from 'react'
-import type { StylesChunk } from '@compiled-css/core'
+import type { StylesChunk } from '@steely/core'
 
 import { useStyles } from './use-styles'
 

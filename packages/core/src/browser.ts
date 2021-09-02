@@ -14,6 +14,6 @@ export function createGlobalStyle(styles: Styles, ...interpolations: Interpolati
 
 class NotImplemented extends Error {
   constructor(type: string) {
-    super(`For usage ${type} please add "@compiled-css/babel-plugin".`)
+    super(`For usage ${type} please add "@steely/babel-plugin".`)
   }
 }
