@@ -1,5 +1,11 @@
 {
   "conventionalCommits": true,
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "message": "chore: release %v"
+    }
+  },
   "packages": ["packages/*"],
   "version": "independent"
 }
