@@ -8,7 +8,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "typescript": "4.3.5"
