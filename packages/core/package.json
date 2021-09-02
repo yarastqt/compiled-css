@@ -1,6 +1,9 @@
 {
   "name": "@compiled-css/core",
   "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
