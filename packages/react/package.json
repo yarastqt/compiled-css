@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "rm -rf lib && npm run build"
   },
   "devDependencies": {
     "@types/react": "17.0.16",
