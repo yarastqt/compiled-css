@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/yarastqt/compiled-css/compare/@steely/core@0.1.2...@steely/core@0.2.0) (2021-09-08)
+
+
+### Bug Fixes
+
+* **core:** compile with inc className ([4b33714](https://github.com/yarastqt/compiled-css/commit/4b337142f93595730df31d07deb1eea076274e5a))
+
+
+### Features
+
+* **core:** remove jest impl ([4d59b7f](https://github.com/yarastqt/compiled-css/commit/4d59b7fabe8d233a39099b6d486a886946da12cf))
+
+
+
+
+
 ## [0.1.2](https://github.com/yarastqt/compiled-css/compare/@steely/core@0.1.1...@steely/core@0.1.2) (2021-09-02)
 
 

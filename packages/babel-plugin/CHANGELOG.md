@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.1.2...@steely/babel-plugin@0.2.0) (2021-09-08)
+
+
+### Bug Fixes
+
+* **babel-plugin:** stop compile inside virtual module ([0897d16](https://github.com/yarastqt/compiled-css/commit/0897d161561ec6dbb7bf52edc0aacda83083dc75))
+
+
+### Features
+
+* **babel-plugin:** generate cn hash for result css ([3946902](https://github.com/yarastqt/compiled-css/commit/39469029938962d26784634c14bb1ffa058ab739))
+
+
+
+
+
 ## [0.1.2](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.1.1...@steely/babel-plugin@0.1.2) (2021-09-02)
 
 

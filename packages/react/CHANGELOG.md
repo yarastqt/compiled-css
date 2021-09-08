@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.1.2...@steely/react@0.2.0) (2021-09-08)
+
+
+### Features
+
+* **react:** remove jest impl ([38c8ff7](https://github.com/yarastqt/compiled-css/commit/38c8ff71e2a178f700421980866cd55c1ab1d444))
+
+
+
+
+
 ## [0.1.2](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.1.1...@steely/react@0.1.2) (2021-09-02)
 
 
