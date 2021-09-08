@@ -45,11 +45,6 @@ export default declare((api, opts) => {
 
   function collectExtractable(path: NodePath<TaggedTemplateExpression>, state: State) {
     if (t.isIdentifier(path.node.tag) && state.imports.includes(path.node.tag.name)) {
-      const className = generateClassName(path, state)
-      // TODO: Refactor this code with better solution.
-      // Push className to first chunk, because it's easy way to extract it for runtime.
-      path.node.quasi.quasis[0].value.raw = `{{${className}}}${path.node.quasi.quasis[0].value.raw}`
-
       state.nodes.push(path)
       // @ts-expect-error (TODO: Fix this case)
       state.extractable.push(path.parentPath.node.id.name)
@@ -64,8 +59,10 @@ export default declare((api, opts) => {
       const extractable = executeModule(code, state.file.opts.filename, mapper)
 
       for (let i = 0; i < extractable.length; i++) {
-        const { className, css: rawCss } = extractable[i]
-        const css = compileCss(rawCss)
+        const chunk = extractable[i]
+
+        const className = generateClassName(chunk.css, state)
+        const css = compileCss(chunk.css.replace(chunk.className, className))
 
         state.nodes[i].replaceWith(
           t.objectExpression([
