@@ -19,6 +19,8 @@ const processed = new Set<string>()
 export default declare((api, opts) => {
   api.assertVersion(7)
 
+  const isVirtualModuleCaller = api.caller((caller) => caller?.name === 'virtual-module-evaluator')
+
   const options = Object.assign(opts, {
     allowedModules: ['@steely/core', '@steely/react'],
     allowedMethods: ['css', 'keyframes', 'createGlobalStyle'],
@@ -82,7 +84,7 @@ export default declare((api, opts) => {
     visitor: {
       Program: {
         enter: (path, state) => {
-          if (processed.has(state.filename)) {
+          if (isVirtualModuleCaller || processed.has(state.filename)) {
             return
           }
 
