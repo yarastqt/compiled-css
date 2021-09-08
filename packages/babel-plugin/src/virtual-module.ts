@@ -57,6 +57,7 @@ export class VirtualModule {
 
     try {
       return require(this.resolve(mappedId))
+      // TODO: Throw next error when error doesn't have current id (it mean module have error inside).
     } catch (_) {
       const moduleId = path.resolve(path.dirname(this.filename), mappedId)
       const filename = this.resolve(moduleId)
