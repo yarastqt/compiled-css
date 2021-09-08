@@ -9,7 +9,7 @@ Usage with `jest` needed add module mapper to generate stable className hashes
 ```js
 module.exports = {
   moduleNameMapper: {
-    '@steely/react': '@steely/react/lib/jest',
+    '@steely/react': '@steely/react/lib/node',
   },
 }
 ```
