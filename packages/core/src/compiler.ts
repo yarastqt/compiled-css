@@ -1,17 +1,11 @@
 import { Kind } from './types'
 import type { StylesChunk, Styles, Interpolation, Interpolations } from './types'
 
+let counter = 0
+
 export function compile(kind: Kind) {
   return (styles: Styles, ...interpolations: Interpolations): StylesChunk => {
-    const classNameRe = /{{(.+)}}/
-    const executed = styles[0].match(classNameRe)
-
-    if (!executed) {
-      throw new Error('Cannot extract className.')
-    }
-
-    const className = executed[1]
-    const body = [styles[0].replace(classNameRe, '')]
+    const body = [styles[0]]
     const extra: string[] = []
 
     for (let i = 0; i < interpolations.length; i++) {
@@ -37,6 +31,7 @@ export function compile(kind: Kind) {
     body.push(...extra)
 
     const source = body.join('')
+    const className = `c-${++counter}`
     const css = createContainer(kind, className, source)
 
     return { kind, className, css, body: source, toString: () => css }
