@@ -1,7 +1,8 @@
 import { Kind } from './types'
 import type { StylesChunk, Styles, Interpolation, Interpolations } from './types'
+import { hash } from './crypto'
 
-let counter = 0
+declare const __dirname: string
 
 export function compile(kind: Kind) {
   return (styles: Styles, ...interpolations: Interpolations): StylesChunk => {
@@ -31,7 +32,8 @@ export function compile(kind: Kind) {
     body.push(...extra)
 
     const source = body.join('')
-    const className = `c-${++counter}`
+    const slug = hash(`${__dirname}${source}`)
+    const className = `c-${slug}`
     const css = createContainer(kind, className, source)
 
     return { kind, className, css, body: source, toString: () => css }
