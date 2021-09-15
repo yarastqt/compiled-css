@@ -5,7 +5,6 @@ import type { NodePath } from '@babel/core'
 
 import { generateExtractableModule } from './module-generator'
 import { executeModule } from './module-executor'
-import { generateClassName } from './classname-generator'
 import { compileCss } from './css-compiler'
 
 interface State {
@@ -60,8 +59,7 @@ export default declare((api, opts) => {
 
       for (let i = 0; i < extractable.length; i++) {
         const chunk = extractable[i]
-
-        const className = generateClassName(chunk.css, state)
+        const className = chunk.className
         const css = compileCss(chunk.css.replace(chunk.className, className))
 
         state.nodes[i].replaceWith(

@@ -17,5 +17,10 @@ tester({
       fixture: '__fixtures__/extends-module/input.js',
       outputFixture: '__fixtures__/extends-module/output.js',
     },
+    {
+      title: 'should transpile styles with nested',
+      fixture: '__fixtures__/nested/input.js',
+      outputFixture: '__fixtures__/nested/output.js',
+    },
   ],
 })
