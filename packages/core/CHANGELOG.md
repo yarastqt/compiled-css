@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/yarastqt/compiled-css/compare/@steely/core@0.2.0...@steely/core@0.3.0) (2021-09-16)
+
+
+### Features
+
+* **core:** generate hash for runtime ([90ab5d4](https://github.com/yarastqt/compiled-css/commit/90ab5d4df638c9780026d0ae997f7fda8f786637))
+
+
+
+
+
 # [0.2.0](https://github.com/yarastqt/compiled-css/compare/@steely/core@0.1.2...@steely/core@0.2.0) (2021-09-08)
 
 

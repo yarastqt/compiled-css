@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.2.0...@steely/babel-plugin@0.3.0) (2021-09-16)
+
+
+### Features
+
+* **babel-plugin:** use className from runtime ([f81354f](https://github.com/yarastqt/compiled-css/commit/f81354fa5865a27e3f7cea62aa2b875141b3866b))
+
+
+
+
+
 # [0.2.0](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.1.2...@steely/babel-plugin@0.2.0) (2021-09-08)
 
 
