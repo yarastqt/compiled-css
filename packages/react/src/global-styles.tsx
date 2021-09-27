@@ -1,13 +1,9 @@
 import type { FC } from 'react'
-import type { StylesChunk } from '@steely/core'
 
+import type { Styleable } from './types'
 import { useStyles } from './use-styles'
 
-interface GlobalStylesProps {
-  styles: StylesChunk | StylesChunk[]
-}
-
-export const GlobalStyles: FC<GlobalStylesProps> = (props) => {
+export const GlobalStyles: FC<Styleable> = (props) => {
   const { styles } = props
   const styleList = Array.isArray(styles) ? styles : [styles]
 
