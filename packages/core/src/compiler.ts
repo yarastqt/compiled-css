@@ -33,7 +33,7 @@ export function compile(kind: Kind) {
 
     const source = body.join('')
     const slug = hash(`${__dirname}${source}`)
-    const className = `c-${slug}`
+    const className = `css-${slug}`
     const css = createContainer(kind, className, source)
 
     return { kind, className, css, body: source, toString: () => css }
