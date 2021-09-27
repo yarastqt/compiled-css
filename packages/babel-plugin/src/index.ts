@@ -60,7 +60,7 @@ export default declare((api, opts) => {
       for (let i = 0; i < extractable.length; i++) {
         const chunk = extractable[i]
         const className = chunk.className
-        const css = compileCss(chunk.css.replace(chunk.className, className))
+        const css = compileCss(chunk.css)
 
         state.nodes[i].replaceWith(
           t.objectExpression([
