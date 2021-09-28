@@ -1,6 +1,7 @@
 import { css } from '@steely/react'
 import { base } from './mixin'
 const styles = {
-  css: '.c-0fdf{color:red;background-color:gray}',
-  className: 'c-0fdf',
+  content: '.css-7czrx6{color:red;background-color:gray}',
+  id: 'css-7czrx6',
+  selector: '.css-7czrx6',
 }
