@@ -66,6 +66,7 @@ export default declare((api, opts) => {
           t.objectExpression([
             t.objectProperty(t.identifier('css'), t.stringLiteral(css)),
             t.objectProperty(t.identifier('className'), t.stringLiteral(className)),
+            t.objectProperty(t.identifier('selector'), t.stringLiteral('.' + className)),
           ]),
         )
       }
