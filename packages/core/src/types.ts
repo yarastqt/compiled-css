@@ -5,8 +5,8 @@ export enum Kind {
 }
 
 export interface StylesChunk {
-  css: string
-  className: string
+  content: string
+  id: string
   selector: string
   /**
    * @internal

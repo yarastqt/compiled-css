@@ -59,14 +59,15 @@ export default declare((api, opts) => {
 
       for (let i = 0; i < extractable.length; i++) {
         const chunk = extractable[i]
-        const className = chunk.className
-        const css = compileCss(chunk.css)
+        const content = compileCss(chunk.content)
+        const id = chunk.id
+        const selector = chunk.selector
 
         state.nodes[i].replaceWith(
           t.objectExpression([
-            t.objectProperty(t.identifier('css'), t.stringLiteral(css)),
-            t.objectProperty(t.identifier('className'), t.stringLiteral(className)),
-            t.objectProperty(t.identifier('selector'), t.stringLiteral('.' + className)),
+            t.objectProperty(t.identifier('content'), t.stringLiteral(content)),
+            t.objectProperty(t.identifier('id'), t.stringLiteral(id)),
+            t.objectProperty(t.identifier('selector'), t.stringLiteral(selector)),
           ]),
         )
       }

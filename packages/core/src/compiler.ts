@@ -18,7 +18,7 @@ export function compile(kind: Kind) {
           body.push(interpolation.body + chunk)
         }
         if (interpolation.kind === Kind.keyframes) {
-          body.push(interpolation.className + chunk)
+          body.push(interpolation.id + chunk)
           extra.push(interpolation.toString())
         }
         if (interpolation.kind === Kind.global) {
@@ -33,16 +33,16 @@ export function compile(kind: Kind) {
 
     const source = body.join('')
     const slug = hash(`${__dirname}${source}`)
-    const className = `css-${slug}`
-    const css = createContainer(kind, className, source)
+    const id = `css-${slug}`
+    const content = createContainer(kind, id, source)
 
     return {
       kind,
-      className,
-      css,
+      id,
+      content,
       body: source,
-      toString: () => css,
-      selector: `.${className}`,
+      toString: () => content,
+      selector: `.${id}`,
     }
   }
 }

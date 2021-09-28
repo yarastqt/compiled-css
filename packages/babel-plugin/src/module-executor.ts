@@ -1,8 +1,9 @@
 import { VirtualModule } from './virtual-module'
 
 interface StylesChunk {
-  css: string
-  className: string
+  content: string
+  id: string
+  selector: string
 }
 
 interface Exports {

@@ -5,12 +5,12 @@ import { inject } from './stylesheet'
 import { useStyleSheetManager } from './stylesheet-manager'
 
 export function useStyles(...styles: StylesChunk[]): string {
-  const classNames = styles.map((style) => style.className)
+  const classNames = styles.map((style) => style.id)
 
   if (typeof window === 'undefined') {
     const manager = useStyleSheetManager()
     for (const style of styles) {
-      manager.set(style.className, style.css)
+      manager.set(style.id, style.content)
     }
   }
 
