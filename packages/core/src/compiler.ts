@@ -36,7 +36,14 @@ export function compile(kind: Kind) {
     const className = `css-${slug}`
     const css = createContainer(kind, className, source)
 
-    return { kind, className, css, body: source, toString: () => css }
+    return {
+      kind,
+      className,
+      css,
+      body: source,
+      toString: () => css,
+      selector: `.${className}`,
+    }
   }
 }
 
