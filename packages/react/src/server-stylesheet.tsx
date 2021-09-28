@@ -27,7 +27,7 @@ export class ServerStyleSheet {
 
     return Array.from(this.sheet)
       .map(([id, content]) => {
-        return `<style data-compiled="${id}">${content}</style>`
+        return `<style data-steely="${id}">${content}</style>`
       })
       .join('')
   }
@@ -43,7 +43,7 @@ export class ServerStyleSheet {
     return (
       <Fragment>
         {Array.from(this.sheet).map(([id, content]) => (
-          <style key={id} data-compiled={id} dangerouslySetInnerHTML={{ __html: content }} />
+          <style key={id} data-steely={id} dangerouslySetInnerHTML={{ __html: content }} />
         ))}
       </Fragment>
     )
