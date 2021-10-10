@@ -51,6 +51,8 @@ export function component<P, V extends Variants = {}, R extends Variants = {}, D
   const variants = mergeVariants(prevOptions.variants, options.variants)
   const styles = mergeStyles(prevOptions.styles, options.styles)
 
+  const displayName = options.displayName ?? (ComponentType as any).displayName ?? 'Component'
+
   const SteelyComponent = forwardRef((props: any, ref) => {
     const sstyles = [...styles]
 
@@ -62,7 +64,7 @@ export function component<P, V extends Variants = {}, R extends Variants = {}, D
       const variantCase = variants[key][props[key]]
 
       if (!variantCase) {
-        throw new Error(`Variant case not found ${key}: ${props[key]} for ${options.displayName}`)
+        throw new Error(`Variant case not found ${key}: ${props[key]} for ${displayName}`)
       }
 
       sstyles.push(variantCase)
@@ -73,8 +75,6 @@ export function component<P, V extends Variants = {}, R extends Variants = {}, D
 
     return <Component {...props} ref={ref} className={className} />
   })
-
-  const displayName = options.displayName ?? (ComponentType as any).displayName ?? 'Component'
 
   SteelyComponent.displayName = `Steely(${displayName})`
   SteelyComponent.defaultProps = options.defaultProps
