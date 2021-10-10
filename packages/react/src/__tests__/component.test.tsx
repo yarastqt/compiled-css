@@ -6,6 +6,10 @@ import { createClientRender, screen } from './utils/createClientRender'
 describe('component', () => {
   const render = createClientRender()
 
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   test('should apply class from styles', () => {
     const Component = component('div', {
       styles: [{ content: 'content', id: 'id', selector: '.id' }],
@@ -127,5 +131,23 @@ describe('component', () => {
     render(<Component className="component" data-testid="component" />)
 
     expect(screen.getByTestId('component')).toHaveAttribute('class', 'id component')
+  })
+
+  test('should throw error when variant case not found', () => {
+    // Mock error bacause testing library print error to console.
+    jest.spyOn(console, 'error').mockImplementation(() => jest.fn())
+
+    const Component = component('div', {
+      variants: {
+        kind: {
+          default: { id: '', content: '', selector: '' },
+        },
+      },
+    })
+
+    expect(() => {
+      // @ts-expect-error
+      render(<Component kind="action" />)
+    }).toThrow('Variant case not found kind: action for Component')
   })
 })
