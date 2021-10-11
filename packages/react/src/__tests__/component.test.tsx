@@ -10,6 +10,14 @@ describe('component', () => {
     jest.resetAllMocks()
   })
 
+  test('should render component with children', () => {
+    const Component = component('div', {})
+
+    render(<Component data-testid="component">Component</Component>)
+
+    expect(screen.getByTestId('component')).toHaveTextContent('Component')
+  })
+
   test('should apply class from styles', () => {
     const Component = component('div', {
       styles: [{ content: 'content', id: 'id', selector: '.id' }],

@@ -1,4 +1,10 @@
-import React, { ComponentType, RefAttributes, forwardRef, NamedExoticComponent } from 'react'
+import React, {
+  ComponentType,
+  RefAttributes,
+  forwardRef,
+  NamedExoticComponent,
+  PropsWithChildren,
+} from 'react'
 import { StylesChunk } from '@steely/core'
 
 import { useStyles } from './use-styles'
@@ -26,9 +32,12 @@ type SteelyComponentType<T, R> =
 
 type VariantProps<T> = { [K in keyof T]: keyof T[K] }
 
-type WithVariantsProps<P, V, R> =
+type WithVariantProps<P, V, R> =
   // Remove previous variant props from current and add extended variant props.
-  Omit<P, keyof R> & VariantProps<V & R> & RefAttributes<any> & { className?: string }
+  Omit<P, keyof R> &
+    VariantProps<V & R> &
+    RefAttributes<any> &
+    PropsWithChildren<{ className?: string }>
 
 type Variants = Record<string, Record<string, StylesChunk>>
 
@@ -44,7 +53,7 @@ type Variants = Record<string, Record<string, StylesChunk>>
 export function component<P, V extends Variants = {}, R extends Variants = {}, D = {}>(
   ComponentType: SteelyComponentType<P, R>,
   options: Options<V, D>,
-): SteelyExoticComponent<WithVariantsProps<P, V, R>, V & R> & DefaultProps<D> {
+): SteelyExoticComponent<WithVariantProps<P, V, R>, V & R> & DefaultProps<D> {
   const Component = (ComponentType as any).__component ?? ComponentType
   const prevOptions = (ComponentType as any).__options ?? {}
 
