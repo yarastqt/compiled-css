@@ -1,6 +1,6 @@
 {
   "name": "@steely/babel-plugin",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publishConfig": {
     "access": "public"
   },
@@ -12,8 +12,8 @@
     "unit": "jest"
   },
   "devDependencies": {
-    "@steely/core": "^0.3.0",
-    "@steely/react": "^0.2.1",
+    "@steely/core": "^0.4.0",
+    "@steely/react": "^0.3.0",
     "@types/babel-types": "7.0.10",
     "@types/babel__core": "7.1.15",
     "@types/babel__generator": "7.6.3",

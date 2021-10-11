@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.2.1...@steely/react@0.3.0) (2021-10-11)
+
+
+### Bug Fixes
+
+* **react:** use correct displayName for invariant message ([d2ab030](https://github.com/yarastqt/compiled-css/commit/d2ab030d3007b50d1679588e0a82458c645fc414))
+
+
+### Features
+
+* **react:** add Styleable type for export ([ebf6e5e](https://github.com/yarastqt/compiled-css/commit/ebf6e5eedcaaadd8a1615f22801712569bd8542a))
+* **react:** impl new component constructor ([ceaa057](https://github.com/yarastqt/compiled-css/commit/ceaa057096969da1b80fe1db74d74802d7e51b71))
+
+
+
+
+
 ## [0.2.1](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.2.0...@steely/react@0.2.1) (2021-09-16)
 
 **Note:** Version bump only for package @steely/react

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.3.0...@steely/babel-plugin@0.4.0) (2021-10-11)
+
+
+### Bug Fixes
+
+* **babel-plugin:** use css without replace ([4406b78](https://github.com/yarastqt/compiled-css/commit/4406b78d8168a856e640dc3d112a3c3e6ab3b6e7))
+
+
+### Features
+
+* **babel-plugin:** impl selector for style chunk ([07fb8eb](https://github.com/yarastqt/compiled-css/commit/07fb8eb321220e55a40f69777d6d5580fdc399a0))
+* **babel-plugin:** support transpile into object prop ([66adecc](https://github.com/yarastqt/compiled-css/commit/66adeccd882bf8d8da873682a3e32877bc18cd94))
+
+
+
+
+
 # [0.3.0](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.2.0...@steely/babel-plugin@0.3.0) (2021-09-16)
 
 

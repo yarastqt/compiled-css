@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/yarastqt/compiled-css/compare/@steely/core@0.3.0...@steely/core@0.4.0) (2021-10-11)
+
+
+### Bug Fixes
+
+* **core:** use css prefix for each className ([c5d3cc1](https://github.com/yarastqt/compiled-css/commit/c5d3cc1b3632e204c5f10ff84b00a7b3f4df002e))
+
+
+### Features
+
+* **core:** impl seoector for style chunk ([11461b4](https://github.com/yarastqt/compiled-css/commit/11461b49a607f0c364f52f0db4011a34e21f6f3f))
+
+
+
+
+
 # [0.3.0](https://github.com/yarastqt/compiled-css/compare/@steely/core@0.2.0...@steely/core@0.3.0) (2021-09-16)
 
 
