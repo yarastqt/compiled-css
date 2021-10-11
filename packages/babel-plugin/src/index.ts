@@ -6,11 +6,11 @@ import type { NodePath } from '@babel/core'
 import { generateExtractableModule } from './module-generator'
 import { executeModule } from './module-executor'
 import { compileCss } from './css-compiler'
+import type { QueueChunk } from './types'
 
 interface State {
   imports: string[]
-  nodes: NodePath<TaggedTemplateExpression>[]
-  extractable: string[]
+  queue: QueueChunk[]
 }
 
 const processed = new Set<string>()
@@ -42,16 +42,35 @@ export default declare((api, opts) => {
     }
   }
 
+  function getParentKind(path: any) {
+    if (t.isObjectProperty(path.parent)) {
+      return 'object'
+    } else if (t.isVariableDeclarator(path.parent)) {
+      return 'variable'
+    }
+
+    // TODO: Add better message for this invariant.
+    throw new Error('Unexpected parent kind')
+  }
+
   function collectExtractable(path: NodePath<TaggedTemplateExpression>, state: State) {
     if (t.isIdentifier(path.node.tag) && state.imports.includes(path.node.tag.name)) {
-      state.nodes.push(path)
-      // @ts-expect-error (TODO: Fix this case)
-      state.extractable.push(path.parentPath.node.id.name)
+      const kind = getParentKind(path)
+
+      state.queue.push({
+        path,
+        node: path.node,
+        kind: kind,
+        meta: {
+          // @ts-expect-error
+          name: path.parent?.id?.name,
+        },
+      })
     }
   }
 
   function extractStyles(path: NodePath<Program>, state: State) {
-    const code = generateExtractableModule(path, state.extractable)
+    const code = generateExtractableModule(path, state.queue)
 
     try {
       // @ts-expect-error
@@ -63,7 +82,7 @@ export default declare((api, opts) => {
         const id = chunk.id
         const selector = chunk.selector
 
-        state.nodes[i].replaceWith(
+        state.queue[i].path.replaceWith(
           t.objectExpression([
             t.objectProperty(t.identifier('content'), t.stringLiteral(content)),
             t.objectProperty(t.identifier('id'), t.stringLiteral(id)),
@@ -88,8 +107,7 @@ export default declare((api, opts) => {
           processed.add(state.filename)
 
           state.imports = []
-          state.nodes = []
-          state.extractable = []
+          state.queue = []
 
           path.traverse({
             ImportDeclaration: (p) => {
@@ -104,7 +122,7 @@ export default declare((api, opts) => {
           })
 
           // @ts-expect-error (TODO: Fix ts issue)
-          if (state.extractable.length > 0) {
+          if (state.queue.length > 0) {
             // @ts-expect-error (TODO: Fix ts issue)
             extractStyles(path, state)
           }
