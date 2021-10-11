@@ -15,7 +15,7 @@ export function generateExtractableModule(path: NodePath<Program>, queue: QueueC
       expressions: t.arrayExpression(
         queue.map((chunk) => {
           // For variable decl case use name as reference to css.
-          if (chunk.kind === 'variable') {
+          if (chunk.parentType === 'VariableDeclarator') {
             return expressionTemplate({ expression: chunk.meta.name })
           }
           // For other cases use css node inplace.

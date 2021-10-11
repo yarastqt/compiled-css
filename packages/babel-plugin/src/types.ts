@@ -4,7 +4,7 @@ import type { NodePath } from '@babel/core'
 export interface QueueChunk {
   path: NodePath<TaggedTemplateExpression>
   node: NodePath<TaggedTemplateExpression>['node']
-  kind: 'variable' | 'object'
+  parentType: NodePath<TaggedTemplateExpression>['parent']['type']
   meta: {
     name?: string
   }

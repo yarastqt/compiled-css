@@ -23,9 +23,9 @@ tester({
       outputFixture: '__fixtures__/nested/output.js',
     },
     {
-      title: 'should transpile styles into object property',
-      fixture: '__fixtures__/object-property/input.js',
-      outputFixture: '__fixtures__/object-property/output.js',
+      title: 'should transpile styles inplace declaration',
+      fixture: '__fixtures__/inplace-decl/input.js',
+      outputFixture: '__fixtures__/inplace-decl/output.js',
     },
   ],
 })

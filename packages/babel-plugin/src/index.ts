@@ -42,25 +42,12 @@ export default declare((api, opts) => {
     }
   }
 
-  function getParentKind(path: any) {
-    if (t.isObjectProperty(path.parent)) {
-      return 'object'
-    } else if (t.isVariableDeclarator(path.parent)) {
-      return 'variable'
-    }
-
-    // TODO: Add better message for this invariant.
-    throw new Error('Unexpected parent kind')
-  }
-
   function collectExtractable(path: NodePath<TaggedTemplateExpression>, state: State) {
     if (t.isIdentifier(path.node.tag) && state.imports.includes(path.node.tag.name)) {
-      const kind = getParentKind(path)
-
       state.queue.push({
         path,
         node: path.node,
-        kind: kind,
+        parentType: path.parent.type,
         meta: {
           // @ts-expect-error
           name: path.parent?.id?.name,
