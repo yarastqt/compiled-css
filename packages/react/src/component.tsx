@@ -96,15 +96,15 @@ export function component<P, V extends Variants = {}, R extends Variants = {}, D
   return SteelyComponent as any
 }
 
-function mergeVariants(a: Variants = {}, b: Variants = {}): Variants {
+function mergeVariants(prev: Variants = {}, next: Variants = {}): Variants {
   const variants: Variants = {}
-  const keys = ([] as string[]).concat(Object.keys(a), Object.keys(b))
+  const keys = ([] as string[]).concat(Object.keys(prev), Object.keys(next))
 
   for (const key of keys) {
     variants[key] = {}
 
-    if (a[key]) Object.assign(variants[key], a[key])
-    if (b[key]) Object.assign(variants[key], b[key])
+    if (prev[key]) Object.assign(variants[key], prev[key])
+    if (next[key]) Object.assign(variants[key], next[key])
   }
 
   return variants
