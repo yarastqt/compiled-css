@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.3.0...@steely/react@0.4.0) (2021-10-12)
+
+
+### Bug Fixes
+
+* **react:** add children props for steely component ([f1a31af](https://github.com/yarastqt/compiled-css/commit/f1a31afd343d37d8efb906015042c1c210975968))
+
+
+### Features
+
+* **react:** styles can be single or array ([74b47da](https://github.com/yarastqt/compiled-css/commit/74b47da8a244172e79e26d1b9d14a15c186c5077))
+
+
+
+
+
 # [0.3.0](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.2.1...@steely/react@0.3.0) (2021-10-11)
 
 

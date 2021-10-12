@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.4.0...@steely/babel-plugin@0.4.1) (2021-10-12)
+
+
+### Bug Fixes
+
+* **babel-plugin:** fix transpile css into array ([ea42e6d](https://github.com/yarastqt/compiled-css/commit/ea42e6dcff0658fdcb1c344cec103095c5ab53d5))
+
+
+
+
+
 # [0.4.0](https://github.com/yarastqt/compiled-css/compare/@steely/babel-plugin@0.3.0...@steely/babel-plugin@0.4.0) (2021-10-11)
 
 
