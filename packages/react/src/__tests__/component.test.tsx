@@ -18,14 +18,27 @@ describe('component', () => {
     expect(screen.getByTestId('component')).toHaveTextContent('Component')
   })
 
-  test('should apply class from styles', () => {
+  test('should apply class from single styles', () => {
     const Component = component('div', {
-      styles: [{ content: 'content', id: 'id', selector: '.id' }],
+      styles: { content: 'content', id: 'id', selector: '.id' },
     })
 
     render(<Component data-testid="component" />)
 
     expect(screen.getByTestId('component')).toHaveAttribute('class', 'id')
+  })
+
+  test('should apply class from multi styles', () => {
+    const Component = component('div', {
+      styles: [
+        { content: 'content-1', id: 'id-1', selector: '.id-1' },
+        { content: 'content-2', id: 'id-2', selector: '.id-2' },
+      ],
+    })
+
+    render(<Component data-testid="component" />)
+
+    expect(screen.getByTestId('component')).toHaveAttribute('class', 'id-1 id-2')
   })
 
   test('should apply class from variants', () => {

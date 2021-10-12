@@ -13,7 +13,7 @@ export interface Options<T, D> {
   variants?: T
   displayName?: string
   defaultProps?: D
-  styles?: StylesChunk[]
+  styles?: StylesChunk | StylesChunk[]
 }
 
 export interface DefaultProps<T> {
@@ -110,9 +110,14 @@ function mergeVariants(a: Variants = {}, b: Variants = {}): Variants {
   return variants
 }
 
-function mergeStyles(a: StylesChunk[] = [], b: StylesChunk[] = []): StylesChunk[] {
-  if (a.length === 0) return b
-  if (b.length === 0) return a
+function mergeStyles(
+  prev: StylesChunk[] = [],
+  next: StylesChunk | StylesChunk[] = [],
+): StylesChunk[] {
+  next = Array.isArray(next) ? next : [next]
 
-  return a.concat(b)
+  if (prev.length === 0) return next
+  if (next.length === 0) return prev
+
+  return prev.concat(next)
 }
