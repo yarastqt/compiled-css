@@ -171,4 +171,18 @@ describe('component', () => {
       render(<Component kind="action" />)
     }).toThrow('Variant case not found kind: action for Component')
   })
+
+  test('should omit variant prop from props', () => {
+    const Component = component('div', {
+      variants: {
+        kind: {
+          default: { id: '', content: '', selector: '' },
+        },
+      },
+    })
+
+    render(<Component kind="default" data-testid="component" />)
+
+    expect(screen.getByTestId('component')).not.toHaveAttribute('kind', 'default')
+  })
 })

@@ -64,25 +64,31 @@ export function component<P, V extends Variants = {}, R extends Variants = {}, D
 
   const SteelyComponent = forwardRef((props: any, ref) => {
     const sstyles = [...styles]
+    const nextProps = { ...props }
 
     for (const key of Object.keys(variants)) {
-      if (props[key] === undefined) {
+      if (nextProps[key] === undefined) {
         continue
       }
 
-      const variantCase = variants[key][props[key]]
+      const variantCase = variants[key][nextProps[key]]
 
       if (!variantCase) {
-        throw new Error(`Variant case not found ${key}: ${props[key]} for ${displayName}`)
+        throw new Error(`Variant case not found ${key}: ${nextProps[key]} for ${displayName}`)
       }
+
+      // FIXME: Rewrite to perf solution.
+      delete nextProps[key]
 
       sstyles.push(variantCase)
     }
 
     const stylesClassName = useStyles(...sstyles)
-    const className = props.className ? `${stylesClassName} ${props.className}` : stylesClassName
+    const className = nextProps.className
+      ? `${stylesClassName} ${nextProps.className}`
+      : stylesClassName
 
-    return <Component {...props} ref={ref} className={className} />
+    return <Component {...nextProps} ref={ref} className={className} />
   })
 
   SteelyComponent.displayName = `Steely(${displayName})`
