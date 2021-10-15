@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.4.0...@steely/react@0.4.1) (2021-10-15)
+
+
+### Bug Fixes
+
+* **react:** omit variant props from component ([b69e367](https://github.com/yarastqt/compiled-css/commit/b69e3676d5c5df35db7297d740cb18a841b53da7))
+* **react:** suppurt as prop for component ([01fc8e3](https://github.com/yarastqt/compiled-css/commit/01fc8e3c81e944e4434233debed9f1fc01dca611))
+
+
+
+
+
 # [0.4.0](https://github.com/yarastqt/compiled-css/compare/@steely/react@0.3.0...@steely/react@0.4.0) (2021-10-12)
 
 
