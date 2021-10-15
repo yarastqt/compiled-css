@@ -185,4 +185,24 @@ describe('component', () => {
 
     expect(screen.getByTestId('component')).not.toHaveAttribute('kind', 'default')
   })
+
+  test('should render intrinsic component with custom tag', () => {
+    const Component = component('div', {})
+
+    render(<Component as="button" data-testid="component" />)
+    const ref = screen.getByTestId('component')
+
+    expect(ref.tagName).toBe('BUTTON')
+    expect(ref).not.toHaveAttribute('as', 'button')
+  })
+
+  test('should render component with custom tag', () => {
+    const Base = ({ as: AsType = 'div', ...props }) => <AsType {...props} />
+    const Component = component(Base, {})
+
+    render(<Component as="button" data-testid="component" />)
+    const ref = screen.getByTestId('component')
+
+    expect(ref.tagName).toBe('BUTTON')
+  })
 })

@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   NamedExoticComponent,
   PropsWithChildren,
+  ReactNode,
 } from 'react'
 import { StylesChunk } from '@steely/core'
 
@@ -37,7 +38,7 @@ type WithVariantProps<P, V, R> =
   Omit<P, keyof R> &
     VariantProps<V & R> &
     RefAttributes<any> &
-    PropsWithChildren<{ className?: string }>
+    PropsWithChildren<{ className?: string; as?: ReactNode }>
 
 type Variants = Record<string, Record<string, StylesChunk>>
 
@@ -88,7 +89,14 @@ export function component<P, V extends Variants = {}, R extends Variants = {}, D
       ? `${stylesClassName} ${nextProps.className}`
       : stylesClassName
 
-    return <Component {...nextProps} ref={ref} className={className} />
+    const ElementType = nextProps.as ?? Component
+
+    if (typeof Component === 'string') {
+      // FIXME: Rewrite to perf solution.
+      delete nextProps.as
+    }
+
+    return <ElementType {...nextProps} ref={ref} className={className} />
   })
 
   SteelyComponent.displayName = `Steely(${displayName})`
